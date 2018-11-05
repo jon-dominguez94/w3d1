@@ -42,7 +42,9 @@ def ford_films
   execute(<<-SQL)
   SELECT m.title 
   FROM movies AS m 
-  JOIN castings c ON m.id = c.movie_id JOIN actors AS a on a.id = c.actor_id where a.name = 'Harrison Ford'
+  JOIN castings c 
+    ON m.id = c.movie_id 
+    JOIN actors AS a on a.id = c.actor_id where a.name = 'Harrison Ford'
   SQL
 end
 
