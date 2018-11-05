@@ -45,7 +45,8 @@ def ford_films
   JOIN castings c 
     ON m.id = c.movie_id 
     JOIN actors AS a 
-    on a.id = c.actor_id where a.name = 'Harrison Ford'
+    on a.id = c.actor_id 
+    where a.name = 'Harrison Ford'
   SQL
 end
 
