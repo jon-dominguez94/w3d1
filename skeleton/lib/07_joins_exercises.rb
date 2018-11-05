@@ -145,7 +145,8 @@ def prolific_actors
     on a.id = c.actor_id 
     where c.ord = 1 
     group by a.name 
-    having count(*) >= 15 order by a.name
+    having count(*) >= 15 
+    order by a.name
   
   
   SQL
