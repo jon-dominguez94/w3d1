@@ -139,7 +139,8 @@ def prolific_actors
   # Obtain a list in alphabetical order of actors who've had at least 15
   # starring roles.
   execute(<<-SQL)
-  SELECT a.name FROM actors AS a JOIN castings AS c on a.id = c.actor_id where c.ord = 1 group by a.name having count(*) >= 15 order by a.name
+  SELECT a.name 
+  FROM actors AS a JOIN castings AS c on a.id = c.actor_id where c.ord = 1 group by a.name having count(*) >= 15 order by a.name
   
   
   SQL
