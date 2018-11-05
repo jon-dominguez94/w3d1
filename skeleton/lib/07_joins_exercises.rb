@@ -143,7 +143,8 @@ def prolific_actors
   FROM actors AS a 
   JOIN castings AS c 
     on a.id = c.actor_id 
-    where c.ord = 1 group by a.name having count(*) >= 15 order by a.name
+    where c.ord = 1 
+    group by a.name having count(*) >= 15 order by a.name
   
   
   SQL
