@@ -162,12 +162,26 @@ def films_by_cast_size
   # List the films released in the year 1978 ordered by the number of actors
   # in the cast (descending), then by title (ascending).
   execute(<<-SQL)
-  
+    SELECT m.title,count(movie_id) From movies AS m JOIN castings AS c on m.id = c.movie_id where m.yr = 1978 group by title order by count(movie_id) DESC, title
   SQL
 end
 
 def colleagues_of_garfunkel
   # List all the people who have played alongside 'Art Garfunkel'.
   execute(<<-SQL)
+  SELECT
+   distinct name
+   FROM 
+   movies AS m 
+   JOIN 
+    castings c 
+    ON 
+    m.id = c.movie_id 
+    JOIN 
+    actors AS a 
+    on 
+    a.id = c.actor_id 
+    where 
+    c.movie_id IN (select movie_id from actors As a join castings As c on a.id = c.actor_id  where name= 'Art Garfunkel') and a.name != 'Art Garfunkel'
   SQL
 end
